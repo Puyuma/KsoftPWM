@@ -1,7 +1,7 @@
 /*
 	Char device for software PWM in rapberry pi3 b+.
 	Shao-Hua, Wang
-	2017.09.02
+	2017.02.02
 */
 #ifndef _SOFTPWM_H_
 #define _SOFTPWM_H_

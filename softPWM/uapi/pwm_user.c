@@ -1,7 +1,7 @@
 /*
 	Access char device for software PWM from user space.
 	Shao-Hua, Wang
-	2017.09.11
+	2017.02.11
 */
 
 #include <stdio.h>

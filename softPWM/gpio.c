@@ -1,7 +1,7 @@
 /*
 	Access raspberry pi3 gpio by kernel module.
 	Shao-Hua, Wang
-	2017.09.02
+	2017.02.02
 */
 
 #include "gpio.h"
