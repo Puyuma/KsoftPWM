@@ -36,18 +36,9 @@ int pwm_task(void *arg) {
 	for(;;) {
 		if (kthread_should_stop()) break;
 
-		/*printk(KERN_INFO "%d %d\n", duty_array[pos].pin, (100000 / PWM_FREQ) * (duty_array[pos].duty_cycle * 100 / (duty_array[pos].max - duty_array[pos].min)));
-
-		printk(KERN_INFO "%d %d\n", duty_array[pos].pin, (100000 / PWM_FREQ) * ((duty_array[pos].max - duty_array[pos].min - duty_array[pos].duty_cycle) * 100 / (duty_array[pos].max - duty_array[pos].min)));
-
-		mdelay(2000);*/
-
 		gpio_set(duty_array[pos].pin);
-
 		udelay((100000 / PWM_FREQ) * (duty_array[pos].duty_cycle * 100 / (duty_array[pos].max - duty_array[pos].min)));
-
 		gpio_clr(duty_array[pos].pin);
-
 		udelay((100000 / PWM_FREQ) * ((duty_array[pos].max - duty_array[pos].min - duty_array[pos].duty_cycle) * 100 / (duty_array[pos].max - duty_array[pos].min)));
 	}
 
@@ -56,7 +47,7 @@ int pwm_task(void *arg) {
 
 long pwm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
 
-	int err = 0, i;
+	int err = 0, i, pos;
 	int *tmp;
 	int pin_exist = 0;
 
@@ -124,11 +115,13 @@ long pwm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
 
 		case PWM_SET:// 0 pin, 1 duty cycle
 
-			tmp = (int *)arg;;
+			tmp = (int *)arg;
 
 			for(i = 0; i < pwm_pin_count; i++) {
 				if(duty_array[i].pin == tmp[0]) {
 					pin_exist = 1;
+					pos = i;
+					break;
 				}
 			}
 
@@ -138,7 +131,7 @@ long pwm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg) {
 				break;
 			}
 
-			duty_array[pwm_pin_count - 1].duty_cycle = tmp[1];
+			duty_array[pos].duty_cycle = tmp[1];
 			break;
 	}
 
