@@ -1,7 +1,7 @@
 /*
 	Access raspberry pi3 gpio pin16 by kernel module.
 	Shao-Hua, Wang
-	2017.09.02
+	2017.02.02
 */
 
 #include <linux/init.h>
