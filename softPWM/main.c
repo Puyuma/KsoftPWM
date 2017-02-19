@@ -17,6 +17,11 @@
 #include "gpio.h"
 #include "softpwm.h"
 
+#define PWM_RANGE	(duty_array[pos].max - duty_array[pos].min)
+#define PERIOD_US	(1000000 / PWM_FREQ)
+#define HIGH_TIME	(PERIOD_US * duty_array[pos].duty_cycle) / PWM_RANGE
+#define LOW_TIME	(PERIOD_US * (PWM_RANGE - duty_array[pos].duty_cycle)) / PWM_RANGE
+
 struct cdev *cdevp = NULL;
 static struct task_struct **pwm_tsk;
 int pwm_pin_count = 0;
@@ -37,9 +42,9 @@ int pwm_task(void *arg) {
 		if (kthread_should_stop()) break;
 
 		gpio_set(duty_array[pos].pin);
-		udelay((100000 / PWM_FREQ) * (duty_array[pos].duty_cycle * 100 / (duty_array[pos].max - duty_array[pos].min)));
+		usleep_range(HIGH_TIME, HIGH_TIME);
 		gpio_clr(duty_array[pos].pin);
-		udelay((100000 / PWM_FREQ) * ((duty_array[pos].max - duty_array[pos].min - duty_array[pos].duty_cycle) * 100 / (duty_array[pos].max - duty_array[pos].min)));
+		usleep_range(LOW_TIME, LOW_TIME);
 	}
 
 	return 0;
@@ -223,6 +228,15 @@ void __exit pwm_exit(void) {
 
 	kfree(cdevp);
 }
+
+/*void delay(unsigned int us) {
+
+	if (!us) return; 
+
+	asm volatile (
+		"loop:"ls
+	);
+}*/
 
 MODULE_LICENSE("GPL");
 

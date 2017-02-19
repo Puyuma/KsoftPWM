@@ -18,7 +18,7 @@
 #define PWM_INIT	_IOW(PWM_MAGIC_NUM, 2, int*)
 #define PWM_SET		_IOW(PWM_MAGIC_NUM, 3, int*)
 
-#define PWM_FREQ 1000
+#define PWM_FREQ 100
 
 #define BCM2837_PERI_BASE 	0x3F000000 //address of Pi3's peripheral 
 #define GP_BASE 			(BCM2837_PERI_BASE + 0x200000)
@@ -42,5 +42,6 @@ void gpio_input(int pin);
 void gpio_output(int pin);
 void gpio_set(int pin);
 void gpio_clr(int pin);
+void delay(unsigned int us);
 
 #endif
