@@ -229,15 +229,6 @@ void __exit pwm_exit(void) {
 	kfree(cdevp);
 }
 
-/*void delay(unsigned int us) {
-
-	if (!us) return; 
-
-	asm volatile (
-		"loop:"ls
-	);
-}*/
-
 MODULE_LICENSE("GPL");
 
 module_init(pwm_init);

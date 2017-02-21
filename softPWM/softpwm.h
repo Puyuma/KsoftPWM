@@ -20,10 +20,6 @@
 
 #define PWM_FREQ 100
 
-#define BCM2837_PERI_BASE 	0x3F000000 //address of Pi3's peripheral 
-#define GP_BASE 			(BCM2837_PERI_BASE + 0x200000)
-#define MAP_SIZE 			(4*1024)
-
 #define MAX_PWM_NUM			5
 
 typedef struct duty_cycle {
@@ -37,11 +33,5 @@ typedef struct duty_cycle {
 
 long pwm_ioctl(struct file *, unsigned int, unsigned long);
 int pwm_task(void*);
-
-void gpio_input(int pin);
-void gpio_output(int pin);
-void gpio_set(int pin);
-void gpio_clr(int pin);
-void delay(unsigned int us);
 
 #endif
