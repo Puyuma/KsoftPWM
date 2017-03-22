@@ -230,6 +230,7 @@ void __exit pwm_exit(void) {
 }
 
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Wang Shao-Hua");
 
 module_init(pwm_init);
 module_exit(pwm_exit);

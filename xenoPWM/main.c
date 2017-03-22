@@ -180,6 +180,7 @@ void __exit xeno_pwm_exit(void) {
 }
 
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Wang Shao-Hua");
 
 module_init(xeno_pwm_init);
 module_exit(xeno_pwm_exit);
