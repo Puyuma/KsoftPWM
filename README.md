@@ -1,2 +1,3 @@
 # KsoftPWM
-Kernel space software PWM development for main project xenobot
+
+This package implements software-based Pulse Width Modulation (PWM) as Linux kernel module.
