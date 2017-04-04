@@ -3,24 +3,24 @@
  * Copyright (c) 2017 Shao-Hua Wang.
  */
 
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
 #include <sys/ioctl.h>
-#include <errno.h>
 
-#include "pwm_user.h"
 #include "../softpwm.h"
+#include "pwm_user.h"
 
 #define PIN1 16
 #define PIN2 21
 
 int filp;
 
-int main() {
-
+int main()
+{
 	filp = open(DEVICE_ACCESS_NAME, 0);
-	if(filp < 0) {
+	if (filp < 0) {
 		printf("failed to open device softpwm\n");
 	}
 
