@@ -1,8 +1,8 @@
-/*
-	Char device for software PWM in rapberry pi3 b+.
-	Shao-Hua Wang
-	2017.02.02
-*/
+/**
+ * Char device for software PWM in Raspberry Pi 3 b+.
+ * Copyright (c) 2017 Shao-Hua Wang.
+ */
+
 #ifndef _SOFTPWM_H_
 #define _SOFTPWM_H_
 

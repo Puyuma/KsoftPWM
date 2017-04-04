@@ -1,8 +1,7 @@
-/*
-	Access RTDM device for software PWM from user space.
-	Shao-Hua Wang
-	2017.02.24
-*/
+/**
+ * Access RTDM device for software PWM from user space.
+ * Copyright (c) 2017 Shao-Hua Wang.
+ */
 
 #define LOW		0
 #define HIGH	1

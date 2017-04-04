@@ -1,8 +1,7 @@
-/*
-	Access raspberry pi3 gpio pin16 by kernel module.
-	Shao-Hua Wang
-	2017.02.02
-*/
+/**
+ * Access Raspberry Pi 3 GPIO pin16 via kernel module.
+ * Copyright (c) 2017 Shao-Hua Wang.
+ */
 
 #include <linux/init.h>
 #include <linux/module.h>
