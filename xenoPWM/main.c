@@ -1,6 +1,6 @@
 /*
 	RTDM device for software PWM based on Xenomai 3.0.3 in rapberry pi3 b+.
-	Shao-Hua, Wang
+	Shao-Hua Wang
 	2017.02.21
 */
 

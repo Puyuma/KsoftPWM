@@ -1,6 +1,6 @@
 /*
 	Char device for software PWM in rapberry pi3 b+.
-	Shao-Hua, Wang
+	Shao-Hua Wang
 	2017.02.02
 */
 

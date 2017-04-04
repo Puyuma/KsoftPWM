@@ -1,6 +1,6 @@
 /*
 	Access raspberry pi3 gpio by kernel module.
-	Shao-Hua, Wang
+	Shao-Hua Wang
 	2017.02.02
 */
 
