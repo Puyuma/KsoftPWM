@@ -26,7 +26,7 @@ int latency[array_size] = {0};
 long long int max_latency = 0;
 long long int min_latency = LONG_MAX;
 
-/* real-time time measure function by Xenomai alchemy library */
+/* real-time time measure function varible by Xenomai alchemy library */
 RTIME start, end;
 
 int main(int argc, char **argv)
