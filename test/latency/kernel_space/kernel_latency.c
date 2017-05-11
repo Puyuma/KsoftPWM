@@ -120,6 +120,7 @@ static int __init kernel_latency_init(void)
 				break;
 		}
 	}
+	printk("kernel_latency: Data computation finished.");
 	return 0;
 }
 
