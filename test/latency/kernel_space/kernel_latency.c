@@ -105,17 +105,17 @@ static int __init kernel_latency_init(void)
 
 	if (max_latency < array_size) {
 		for (i = 0; i <= max_latency; i++) {
-			if(buf_count < BUFF_SIZE)
-				buf_count += sprintf(gb_buf + buf_count, "%d %d\n", i,
-					     latency[i]);
+			if (buf_count < BUFF_SIZE)
+				buf_count += sprintf(gb_buf + buf_count,
+						     "%d %d\n", i, latency[i]);
 			else
 				break;
 		}
 	} else {
 		for (i = 0; i < array_size; i++) {
-			if(buf_count < BUFF_SIZE)
-				buf_count += sprintf(gb_buf + buf_count, "%d %d\n", i,
-                         latency[i]);
+			if (buf_count < BUFF_SIZE)
+				buf_count += sprintf(gb_buf + buf_count,
+						     "%d %d\n", i, latency[i]);
 			else
 				break;
 		}
