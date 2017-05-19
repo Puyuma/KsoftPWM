@@ -1,5 +1,5 @@
 /**
- * Cyclic latency test for wiring pi delay function in rapberry pi3 b+.
+ * Cyclictest-like latency measurement for Wiring Pi.
  * Copyright (c) 2017 Shao-Hua Wang.
  */
 
@@ -15,29 +15,27 @@
 #define array_size 10000
 
 /* get user-defined variables by getopt() */
-int times = 0;
-int test_period = 0;
-char *output = NULL;
+static int times = 0;
+static int test_period = 0;
+static char *output = NULL;
 
 /* latency test variable */
-int negative_num = 0;
-int overrun_num = 0;
-int latency[array_size] = {0};
-long long int max_latency = 0;
-long long int min_latency = LONG_MAX;
+static int negative_num = 0;
+static int overrun_num = 0;
+static int latency[array_size] = {0};
+static long long int max_latency = 0;
+static long long int min_latency = LONG_MAX;
 
 /* real-time time measure function varible by Xenomai alchemy library */
-RTIME start, end;
+static RTIME start, end;
 
 int main(int argc, char **argv)
 {
-
 	int get;
 
 	wiringPiSetup();
 
 	while ((get = getopt(argc, argv, "p:n:o:")) != -1) {
-
 		switch (get) {
 		case 'p':
 			test_period = atoi(optarg);
@@ -68,11 +66,8 @@ int main(int argc, char **argv)
 	printf("%d %d\n", times, test_period);
 
 	for (int i = 0; i < times; i++) {
-
 		start = rt_timer_read();
-
 		delayMicroseconds(test_period);
-
 		end = rt_timer_read();
 
 		if (LATENCY / 1000 < 0)
@@ -90,17 +85,12 @@ int main(int argc, char **argv)
 	}
 
 	if (output != NULL) {
-
-		FILE *out_fd;
-
-		int i;
-
-		out_fd = fopen(output, "w+");
+		FILE *out_fd = fopen(output, "w+");
 
 		fprintf(out_fd, "# Max:%lld Min:%lld Overrun:%d Negative:%d\n",
 			max_latency, min_latency, overrun_num, negative_num);
 
-		for (i = 0; i <= max_latency; i++) {
+		for (int i = 0; i <= max_latency; i++) {
 			fprintf(out_fd, "%d %d\n", i, latency[i]);
 		}
 	}
