@@ -1,0 +1,1 @@
+/home/shaohua/Develope/xenomai-3/kernel/cobalt/include/asm-generic/xenomai/machine.h

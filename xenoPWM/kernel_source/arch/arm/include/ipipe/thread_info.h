@@ -1,0 +1,1 @@
+/home/shaohua/Develope/xenomai-3/kernel/cobalt/include/ipipe/thread_info.h
